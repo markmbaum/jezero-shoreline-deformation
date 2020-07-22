@@ -1,0 +1,13 @@
+ENVI
+samples = 3301
+lines   = 2580
+bands   = 1
+header offset = 0
+file type = ENVI Standard
+data type = 2
+interleave = bsq
+byte order = 0
+map info = {Geographic Lat/Lon, 1, 1, 70.778156617, 23.651287986, 0.00337412083065738, 0.00337412083062016}
+coordinate system string = {GEOGCS["unnamed ellipse",DATUM["D_unknown",SPHEROID["Unknown",3396190,0]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]}
+band names = {
+Band 1}
