@@ -1,4 +1,5 @@
 from numpy import *
+from copy import copy
 from os.path import join, isfile
 from pandas import read_csv, read_excel
 from geopandas import read_file
@@ -369,11 +370,11 @@ def plot_jezero_ocean(fig, subax, jlon, jlat, jTopo, jDef, sealev, shps,
     #make subplotting decision
     ax = handle_subax(fig, subax)
     #specify coloring
-    cmap = plt.get_cmap('Greys')
+    cmap = copy(plt.get_cmap('Greys'))
     cmap.set_bad('royalblue')
     h = jTopo - jDef
     h[h < sealev] = nan
-    r = ax.pcolormesh(jlon, jlat, h/1e3, cmap=cmap)
+    r = ax.pcolormesh(jlon, jlat, h/1e3, cmap=cmap, shading='auto')
     #make a colorbar if desired
     handle_colorbar(ax, r, clab)
     #draw Jezero shapefile info
@@ -424,7 +425,11 @@ def plot_jezero_sealev(fig, subax, jlon, jlat, jTopo, jDef, sealev, shps,
         vmin = -div
         vmax = div
     #plot topography from sea level
-    r = ax.pcolormesh(jlon, jlat, h/1e3, vmin=vmin/1e3, vmax=vmax/1e3, cmap=cmap)
+    r = ax.pcolormesh(jlon, jlat, h/1e3,
+            vmin=vmin/1e3,
+            vmax=vmax/1e3,
+            cmap=cmap,
+            shading='auto')
     #make a colorbar if desired
     handle_colorbar(ax, r, clab)
     #include topo contours
