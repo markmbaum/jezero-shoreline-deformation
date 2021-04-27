@@ -20,6 +20,9 @@ import matplotlib.patheffects as path_effects
 #path to directory for saving plots
 dirplots = 'plots'
 
+#whether to save and close plots instead of showing them
+saveplots = False
+
 #path to global topography grid downsampled from MOLA data here:
 #   https://pds-geosciences.wustl.edu/missions/mgs/megdr.html
 fngtopo = join('topo', 'topo_modern.csv')
@@ -450,10 +453,11 @@ def save_close(fig, d, fn):
     :param str d: the directory to save in
     :param stf fn: the name of the file to save"""
 
-    p = join(d, fn)
-    fig.savefig(p)
-    print('figure saved: %s' % p)
-    plt.close(fig)
+    if saveplots:
+        p = join(d, fn)
+        fig.savefig(p)
+        print('figure saved: %s' % p)
+        plt.close(fig)
 
 #-------------------------------------------------------------------------------
 # MAIN
